@@ -1,4 +1,5 @@
 ﻿using Application.Orders.DTOs;
+using Contracts;
 using Domain.Orders;
 
 namespace Application.Orders;
@@ -6,10 +7,11 @@ namespace Application.Orders;
 public class OrderService : IOrderService
 {
     private readonly IOrderRepository orderRepository;
-
-    public OrderService(IOrderRepository orderRepository)
+    private readonly ISmsService smsService;
+    public OrderService(IOrderRepository orderRepository, ISmsService smsService)
     {
         this.orderRepository = orderRepository;
+        this.smsService = smsService;
     }
 
     public void AddOrder(AddOrderDto addOrderDto)
@@ -25,6 +27,11 @@ public class OrderService : IOrderService
         order.Finally();
         orderRepository.Update(order);
         orderRepository.SaveChange();
+        smsService.SendSms(new SmsBody()
+        {
+            Message ="Test" ,
+            PhoneNumber ="09369944780"
+        });
     }
 
     public OrderDto GetOrderById(int id)
