@@ -1,5 +1,6 @@
 ﻿using Application.Products.DTOs;
 using Domain.Products;
+using Domain.Shared;
 
 namespace Application.Products;
 
@@ -14,7 +15,7 @@ public class ProductService : IProductService
 
     public void AddProduct(AddProductDto productDto)
     {
-        var product = new Product(productDto.Title, productDto.Price);
+        var product = new Product(productDto.Title, new Money(productDto.Price) );
         productRepository.Add(product);
         productRepository.SaveChange();
     }
@@ -33,7 +34,7 @@ public class ProductService : IProductService
 
         var productDto = new ProductDto()
         {
-            Price =product.Price,
+            Price = product.Price.Value,
             Title = product.Title,            
         };
 
@@ -46,7 +47,7 @@ public class ProductService : IProductService
                     .GetList()
                     .Select(x=>new ProductDto()
                     {
-                        Price = x.Price,
+                        Price = x.Price.Value,
                         Title = x.Title,
                         Id = x.Id
                     })
