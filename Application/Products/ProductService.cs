@@ -1,5 +1,6 @@
 ﻿using Application.Products.DTOs;
 using Domain.Products;
+using Domain.ProductsAggregate.Repository;
 using Domain.Shared;
 
 namespace Application.Products;

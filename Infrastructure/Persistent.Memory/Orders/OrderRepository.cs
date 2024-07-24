@@ -1,4 +1,5 @@
 ﻿using Domain.Orders;
+using Domain.OrdersAggregate.Repository;
 
 namespace Infrastructure.Persistent.Memory.Orders;
 

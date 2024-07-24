@@ -1,4 +1,6 @@
-﻿namespace Domain.Products;
+﻿using Domain.Products;
+
+namespace Domain.ProductsAggregate.Repository;
 
 public interface IProductRepository
 {

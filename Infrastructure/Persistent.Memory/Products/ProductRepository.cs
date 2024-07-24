@@ -1,4 +1,5 @@
 ﻿using Domain.Products;
+using Domain.ProductsAggregate.Repository;
 
 namespace Infrastructure.Persistent.Memory.Products;
 

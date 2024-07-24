@@ -1,4 +1,6 @@
-﻿namespace Domain.Orders;
+﻿using Domain.Orders;
+
+namespace Domain.OrdersAggregate.Repository;
 
 public interface IOrderRepository
 {

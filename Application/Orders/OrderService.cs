@@ -1,6 +1,7 @@
 ﻿using Application.Orders.DTOs;
 using Contracts;
 using Domain.Orders;
+using Domain.OrdersAggregate.Repository;
 
 namespace Application.Orders;
 
@@ -16,7 +17,7 @@ public class OrderService : IOrderService
 
     public void AddOrder(AddOrderDto addOrderDto)
     {
-        var order = new Order(addOrderDto.ProductId, addOrderDto.Count, addOrderDto.Price);
+        var order = new Order(addOrderDto.ProductId);
         orderRepository.Add(order);
         orderRepository.SaveChange();   
     }

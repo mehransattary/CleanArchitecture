@@ -1,8 +1,8 @@
 ﻿using Application.Orders;
 using Application.Products;
 using Contracts;
-using Domain.Orders;
-using Domain.Products;
+using Domain.OrdersAggregate.Repository;
+using Domain.ProductsAggregate.Repository;
 using Infrastructure.Persistent.Memory;
 using Infrastructure.Persistent.Memory.Orders;
 using Infrastructure.Persistent.Memory.Products;
