@@ -2,6 +2,7 @@
 using Application.Products;
 using Contracts;
 using Domain.OrdersAggregate.Repository;
+using Domain.OrdersAggregate.Services;
 using Domain.ProductsAggregate.Repository;
 using Infrastructure.Persistent.Memory;
 using Infrastructure.Persistent.Memory.Orders;
@@ -24,5 +25,8 @@ public class ProjectBootstrapper
 
         services.AddTransient<IProductRepository, ProductRepository>();
         services.AddTransient<IOrderRepository, OrderRepository>();
+
+        services.AddTransient<IOrderDomainService, IOrderDomainService>();
+
     }
 }

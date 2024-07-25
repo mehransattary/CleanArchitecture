@@ -1,4 +1,5 @@
 ﻿using Domain.OrdersAggregate;
+using Domain.OrdersAggregate.Services;
 using Domain.Shared;
 
 namespace Domain.Orders;
@@ -17,8 +18,11 @@ public class Order
         ProductId = productId;
     }
 
-    public void AddItem(Guid productId, int count, int price)
+    public void AddItem(Guid productId, int count, int price, IOrderDomainService orderDomainService)
     {
+        if (orderDomainService.IsProductNotExist(productId))
+            throw new Exception("Is Product Not Exist");
+
         Items.Add(new OrderItem(Id, productId, count, Money.FromTooman(price)));
         TotalItems += count;
     }

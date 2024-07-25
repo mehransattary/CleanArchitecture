@@ -32,6 +32,11 @@ public class ProductRepository : IProductRepository
         return context.Products;
     }
 
+    public bool IsProductExist(Guid id)
+    {
+        return context.Products.Any(x=>x.Id == id);
+    }
+
     public void SaveChange()
     {
       //

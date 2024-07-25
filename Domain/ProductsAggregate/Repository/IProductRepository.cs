@@ -11,4 +11,5 @@ public interface IProductRepository
     void Delete(Product product);
     void SaveChange();
 
+    bool IsProductExist(Guid id);
 }
