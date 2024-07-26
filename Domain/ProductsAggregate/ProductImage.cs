@@ -1,6 +1,8 @@
-﻿namespace Domain.ProductsAggregate;
+﻿using Domain.Shared;
 
-public class ProductImage
+namespace Domain.ProductsAggregate;
+
+public class ProductImage : BaseEntity
 {
     public ProductImage(Guid productId, string imageName )
     {

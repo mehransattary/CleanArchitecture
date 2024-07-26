@@ -1,21 +1,22 @@
 ﻿using Domain.OrdersAggregate;
+using Domain.OrdersAggregate.Events;
 using Domain.OrdersAggregate.Services;
 using Domain.Shared;
 
 namespace Domain.Orders;
 
-public class Order
+public class Order : AggregateRoot
 {
     public long Id { get; private set; }
-    public Guid ProductId { get; private set; }
+    public long UserId { get; private set; }
     public bool IsFinally { get; set; }
     public int TotalItems { get; set; }
     public DateTime FinalyDate { get; set; }
     public ICollection<OrderItem> Items { get; private set; }
 
-    public Order(Guid productId)
+    public Order(long userId)
     {
-        ProductId = productId;
+        UserId = userId;
     }
 
     public void AddItem(Guid productId, int count, int price, IOrderDomainService orderDomainService)
@@ -45,6 +46,7 @@ public class Order
     {
         IsFinally = true;
         FinalyDate = DateTime.Now;
+        AddDomainEvent(new OrderFinalized(Id, UserId));
     }
 
 }

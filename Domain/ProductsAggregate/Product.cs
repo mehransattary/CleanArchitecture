@@ -3,7 +3,7 @@ using Domain.Shared;
 
 namespace Domain.Products;
 
-public class Product
+public class Product: AggregateRoot
 {
     public Guid Id { get; private set; }
     public string Title { get; private set; }

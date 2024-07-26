@@ -2,7 +2,7 @@
 
 namespace Domain.OrdersAggregate;
 
-public class OrderItem
+public class OrderItem : BaseEntity
 {
     public OrderItem(long orderId, Guid productId, int count, Money price)
     { 
